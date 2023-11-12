@@ -1,0 +1,172 @@
+﻿@model FastFoodResturant.Models.FoodMaster
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/Create.css" />
+<div class="card card-for-foodmaster" style="max-width: 900px;">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div class="row">
+                <div class="col-md-4 offset-xl-0">
+                    <div class="form-group">
+                        <input asp-for="FoodName" class="form-control" placeholder="Food Name" />
+                        <span asp-validation-for="FoodName" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select asp-for="CategoryId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.CategoryId">
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="CategoryId" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select asp-for="GSTId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.GSTId">
+                            <option value="">Select GST</option>
+                        </select>
+                        <span asp-validation-for="GSTId" class="label-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 style="font-weight: 600; display: inline-block;">Picture</h6>
+                        <label class="custom-file-upload">
+                            <span>Choose File</span>
+                            <input asp-for="FoodImage" type="file" name="FoodImageData" class="form-control-file" data-title="Choose File" />
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="form-group">
+                        <input asp-for="FoodDescription" class="form-control" placeholder="Food Description" />
+                        <span asp-validation-for="FoodDescription" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select asp-for="FoodType" class="form-control custom-select" style="border-radius: 5px;">
+                                <option value="">Select Food Type</option>
+                                <option value="Appetizer">Appetizer</option>
+                                <option value="Main Course">Main Course</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Salad">Salad</option>
+                                <option value="Soup">Soup</option>
+                                <option value="Snack">Snack</option>
+                                <option value="Beverage">Beverage</option>
+                                <option value="Side Dish">Side Dish</option>
+                                <option value="Breakfast">Breakfast</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="FoodType" class="label-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input asp-for="PreparationTime" class="form-control" placeholder="Preparation Time" type="time" />
+                        </div>
+                        <span asp-validation-for="PreparationTime" class="label-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="Fat" class="form-control" placeholder="Fat" />
+                        <span asp-validation-for="Fat" class="label-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="Protein" class="form-control" placeholder="Protein" />
+                        <span asp-validation-for="Protein" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="Carbohydrates" class="form-control" placeholder="Carbohydrates" />
+                        <span asp-validation-for="Carbohydrates" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="Fiber" class="form-control" placeholder="Fiber" />
+                        <span asp-validation-for="Fiber" class="label-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="Calories" class="form-control" placeholder="Calories" />
+                        <span asp-validation-for="Calories" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="FoodPrice" class="form-control" placeholder="Food Price" />
+                        <span asp-validation-for="FoodPrice" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label" style="font-size:18px; font-weight:400;">
+                            <input class="form-check-input" type="checkbox" asp-for="IsVegan" /> Is Vegan ?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" asp-for="IsSpicy" /> Is Spicy ?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" asp-for="IsGlutenFree" /> Is Gluten ?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" id="botam">
+                        <input type="submit" value="Create" class="btn btn-create" />
+                        <button type="button" class="btn btn-cancel" onclick="window.history.back()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="error-message">
+                            <label class="label label-danger">@ViewBag.Message</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

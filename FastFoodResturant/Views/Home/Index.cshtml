@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #2c3e50; 
+        color: #ecf0f1;
+    }
+
+    .welcome-message {
+        text-align: center;
+    }
+
+    .main-heading {
+        font-size: 3em;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #3498db;
+    }
+
+    .sub-heading {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        color: #95a5a6;
+    }
+
+    .decorative-line {
+        width: 50px;
+        height: 3px;
+        background-color: #3498db;
+        margin: 10px auto;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        color: #ecf0f1;
+        background-color: #e74c3c;
+        border-radius: 50px;
+        transition: background-color 0.3s;
+    }
+
+        .cta-button:hover {
+            text-decoration:none;
+            background-color: #c0392b; 
+            color: #ecf0f1;
+        }
+</style>
+<body>
+    <div class="welcome-message">
+        <div class="main-heading">Indulge Your Senses</div>
+        <div class="decorative-line"></div>
+        <div class="sub-heading">A Culinary Experience Awaits You</div>
+        <a href="#" class="cta-button">Go To Dashboard</a>
+    </div>
+</body>

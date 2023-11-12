@@ -1,0 +1,47 @@
+﻿@model FastFoodResturant.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+<div class="card card-for-edit">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <input type="hidden" asp-for="CategoryId" />
+
+            <div class="form-group">
+                <input asp-for="CategoryName" id="CategoryName" class="form-control" placeholder="Enter Category Name" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="CategoryDescription" id="CategoryDescription" class="form-control" placeholder="Enter Category Description" />
+                <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        @if (Model.CategoryImage != null && Model.CategoryImage.Length > 0)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.CategoryImage)" alt="Profile Picture" class="profile-picture" />
+                        }
+                        <input asp-for="CategoryImage" type="file" name="categoryImageData" class="form-control-file" />
+                        <span asp-validation-for="CategoryImage" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

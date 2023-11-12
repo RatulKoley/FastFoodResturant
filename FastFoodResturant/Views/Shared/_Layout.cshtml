@@ -1,0 +1,196 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>@ViewData["Title"] - Fast Food Resturant</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SYw9C+dt/1aU5C4" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/FastFoodResturant.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FastFoodResturant.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FastFoodResturant.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+                    <a href="#">Fast-Food Resturant</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="/Image/Staff/staff.png"
+            alt="User picture">
+        </div> 
+        <div class="user-info">
+          <span class="user-name">Ratul
+            <strong>Koley</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li>
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-desktop"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Purchase Menu</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Purchase Product</a>
+                </li>
+                <li>
+                  <a href="#">Make Order</a>
+                </li>
+                <li>
+                  <a href="#">Order Summary</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+                                <i class="fa fa-birthday-cake"></i>
+              <span>Components</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                   <a asp-controller="FoodMasters" asp-action="Index">Food Master</a>
+                </li>
+                <li>
+                  <a href="#">Product Master</a>
+                </li>
+                <li>
+                  <a href="#">Toppings Master</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-clipboard"></i>
+                                <span>Reports</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Product Purchase</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Order Summary</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Sales Register</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a asp-controller="Categories" asp-action="Index">Categories</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="GST" asp-action="Index">GST Master</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Table" asp-action="Index">Table Master</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Unit" asp-action="Index">Unit Master</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Supplier" asp-action="Index" >Supplier Master</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                <span>Contact Us</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact Info</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="form-group col-md-12">
+                        <div role="alert" style="margin-top:100px;" >
+                            <h4 class="alert-heading">@RenderBody()</h4>
+                        </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

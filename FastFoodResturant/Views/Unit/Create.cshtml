@@ -1,0 +1,45 @@
+﻿@model FastFoodResturant.Models.UnitMaster
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/Create.css" />
+<div class="card card-for-category">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="form-group">
+                        <input asp-for="UnitName" class="form-control" placeholder="Unit Name" />
+                        <span asp-validation-for="UnitName" class="label-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="form-group" id="botam">
+                        <input type="submit" value="Create" class="btn btn-create" />
+                        <button type="button" class="btn btn-cancel" onclick="window.history.back()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="error-message">
+                            <label class="label label-danger">@ViewBag.Message</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

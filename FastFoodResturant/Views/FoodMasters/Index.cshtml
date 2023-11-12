@@ -1,0 +1,188 @@
+﻿@model FastFoodResturant.ViewModels.ListViewModels.FoodMasterListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/index.css" />
+
+<div class="card">
+    <div class="card-body">
+        <div style="display: flex; justify-content: space-between;">
+            <a asp-action="Create" class="create-button" style="margin-bottom: 8px;">
+                <i class="fas fa-plus"></i> Add New
+            </a>
+
+            <form asp-action="Index" style="width: 200px;">
+                <div class="input-group">
+                    <input name="searchterm" class="form-control form-control-sm my-0 py-1 red-border" type="text" style="border: 2px solid #FF5733;
+    border-radius: 15px;" placeholder="Search" />
+                    <div class="input-group-append">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <a style="display: block; text-align: center; font-weight: 600; color: inherit; text-decoration: none; margin-bottom: 6px;"
+                           href="/FoodMasters/Index?orderBy=@Model.NameSortOrder">Name</a>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Category</h6>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Price</h6>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Type</h6>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Neutrition Values</h6>
+                    </th>
+                    <th>
+                        <h6 style="text-align:center;font-weight:600">Actions</h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.FoodMasterList)
+                {
+                    <tr style="text-align:center; font-size: 14px;">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoodName)
+                            @if (item.IsSpicy)
+                            {
+                                <i class="fas fa-fire" style="color: red;"></i>
+
+                            }
+                            else
+                            {
+                                <i class="fas fa-fire" style="color: green;"></i>
+                            }
+
+                            @if (item.IsVegan)
+                            {
+                                <i class="fas fa-circle" style="color: green;"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-circle" style="color: red;"></i>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoodPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoodType)
+                        </td>
+                        <td>
+                            <div>
+                                <strong>Fat: @Html.DisplayFor(modelItem => item.Fat)</strong> ,
+                                <strong>Carb: @Html.DisplayFor(modelItem => item.Carbohydrates)</strong>
+                            </div>
+                            <div>
+                                <strong>Protien: @Html.DisplayFor(modelItem => item.Protein)</strong> , 
+                                <strong>Cal: @Html.DisplayFor(modelItem => item.Calories)</strong> 
+                            </div>
+                        </td>
+                        <td class="table-data">
+                            <a asp-action="Edit" asp-route-id="@item.FoodMasterId" class="edit-button">
+                                <i class="fas fa-edit" style="color: #3498db;"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.FoodMasterId" class="delete-button">
+                                <i class="fas fa-trash-alt" style="color: #e74c3c;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                @if (Model.CurrentPage > 1)
+                {
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=1" aria-label="Very first page">
+                            <span aria-hidden="true">««</span>
+                        </a>
+                    </li>
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = Math.Max(1, Model.CurrentPage - 1); i <= Math.Min(Model.TotalPage, Model.CurrentPage + 1); i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="page-item" style="list-style: none; margin-right: 5px;">
+                            <a class="page-link active" style="color: #fff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    background-color: #007bff;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@i"> @i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item" style="list-style: none; margin-right: 5px;">
+                            <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@i"> @i</a>
+                        </li>
+                    }
+                }
+                @if (Model.CurrentPage < Model.TotalPage)
+                {
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/FoodMasters/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@Model.TotalPage" aria-label="Last page">
+                            <span aria-hidden="true">»»</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model FastFoodResturant.Models.FoodMaster
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<link rel="stylesheet" href="~/css/Delete.css" />
+
+<div class="card card-for-delete">
+    <div class="card-body">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="FoodMasterId" />
+
+            <div class="content-container">
+                <div class="profile-container">
+                    <img src="data:image;base64,@Convert.ToBase64String(Model.FoodImage)" alt="Profile Picture" class="profile-picture" />
+                </div>
+
+                <div class="text-and-buttons">
+                    <h4>@Html.DisplayFor(model => model.FoodName)</h4>
+
+                    <div class="btn-container">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

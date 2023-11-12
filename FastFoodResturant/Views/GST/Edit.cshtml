@@ -1,0 +1,40 @@
+﻿@model FastFoodResturant.Models.GSTMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+<div class="card card-for-edit">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <input type="hidden" asp-for="GSTId" />
+
+            <div class="form-group">
+                <input asp-for="GSTName" id="CategoryName" class="form-control" placeholder="Enter Name" />
+                <span asp-validation-for="GSTName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="GSTPercentage" id="CategoryDescription" class="form-control" placeholder="Enter Percentage" />
+                <span asp-validation-for="GSTPercentage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

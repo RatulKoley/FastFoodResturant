@@ -1,0 +1,41 @@
+﻿@model FastFoodResturant.Models.TableMaster
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link rel="stylesheet" href="~/css/Delete.css" />
+
+<div class="card card-for-delete-table" style="max-width: 350px;">
+    <div class="card-body">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="TableId" />
+
+            <div class="content-container">
+                <div class="text-and-buttons">
+                    <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 8px;">
+                        @Html.DisplayFor(model => model.TableName) - Capacity: @Html.DisplayFor(model => model.Capacity)
+                    </h4>
+                    <div style="margin-bottom: 12px;">
+                        <span style="font-size: 18px; font-weight: bold;">Location:</span>
+                        @if (Model.IsOutSide)
+                        {
+                            <span style="color: #4CAF50; margin-left: 6px;font-size: 19px;">Outside</span>
+                        }
+                        else
+                        {
+                            <span style="color: #f44336; margin-left: 6px;font-size: 19px;">Inside</span>
+                        }
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <span style="font-size: 18px; font-weight: bold;">Floor:</span>
+                        <span style="color: #f44336; margin-left: 6px; font-size: 19px;">@Html.DisplayFor(model => model.FloorType)</span>
+                    </div>
+                    <div class="btn-container">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

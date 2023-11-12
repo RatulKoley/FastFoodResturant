@@ -1,0 +1,56 @@
+﻿@model FastFoodResturant.Models.SupplierMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+<div class="card card-for-edit">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <input type="hidden" asp-for="SupplierId" />
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input asp-for="SupplierName" id="CategoryName" class="form-control" placeholder="Enter Name" />
+                        <span asp-validation-for="SupplierName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="SupplierAddress" id="CategoryName" class="form-control" placeholder="Enter Adress" />
+                        <span asp-validation-for="SupplierAddress" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input asp-for="SupplierPhone" id="CategoryDescription" class="form-control" placeholder="Enter Phone" />
+                        <span asp-validation-for="SupplierPhone" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="SupplierEmail" id="CategoryDescription" class="form-control" placeholder="Enter Email" />
+                        <span asp-validation-for="SupplierEmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,67 @@
+﻿@model FastFoodResturant.Models.TableMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+<div class="card card-for-edit">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <input type="hidden" asp-for="TableId" />
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input asp-for="TableName" id="CategoryName" class="form-control" placeholder="Enter Name" />
+                        <span asp-validation-for="TableName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="Capacity" id="CategoryName" class="form-control" placeholder="Enter Adress" />
+                        <span asp-validation-for="Capacity" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select asp-for="FloorType" class="form-control custom-select">
+                                <option value="">Select FloorType</option>
+                                <option value="Ground Floor">Ground Floor</option>
+                                <option value="First Floor">First Floor</option>
+                                <option value="Second Floor">Second Floor</option>
+                            </select>
+                            <span asp-validation-for="FloorType" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" asp-for="IsOutSide"/> Is Outside ?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

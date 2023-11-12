@@ -1,0 +1,68 @@
+﻿@model FastFoodResturant.ViewModels.ListViewModels.UnitMasterListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/index.css" />
+
+<div class="card">
+    <div class="card-body">
+        <div style="display: flex; justify-content: space-between;">
+            <a asp-action="Create" class="create-button" style="margin-bottom: 8px;">
+                <i class="fas fa-plus"></i> Add New
+            </a>
+
+            <form asp-action="Index" style="width: 200px;">
+                <div class="input-group">
+                    <input name="searchterm" class="form-control form-control-sm my-0 py-1 red-border" type="text" style="border: 2px solid #FF5733;
+    border-radius: 15px;" placeholder="Search" />
+                    <div class="input-group-append">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">ID</h6>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Unit</h6>
+                    </th>
+                    <th scope="col">
+                        <h6 style="text-align:center;font-weight:600">Created On</h6>
+                    </th>
+                    <th>
+                        <h6 style="text-align:center;font-weight:600">Actions</h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UnitMasterList)
+                {
+                    <tr style="text-align:center; font-size: 14px;">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td class="table-data">
+                            <a asp-action="Edit" asp-route-id="@item.UnitId" class="edit-button">
+                                <i class="fas fa-edit" style="color: #3498db;"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.UnitId" class="delete-button">
+                                <i class="fas fa-trash-alt" style="color: #e74c3c;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
