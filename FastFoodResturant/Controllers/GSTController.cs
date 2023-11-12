@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FastFoodResturant.Contexts;
 using FastFoodResturant.Models;
 using System.Drawing;
+using FastFoodResturant.ViewModels.ListViewModels;
 
 namespace FastFoodResturant.Controllers
 {
@@ -20,13 +21,38 @@ namespace FastFoodResturant.Controllers
             this.dbcon = dbcon;
         }
 
-        public async Task<IActionResult> Index(string searchterm)
+        public async Task<IActionResult> Index(string searchterm, string orderBy = "", int CurrentPage = 1)
         {
             using var transaction = await dbcon.Database.BeginTransactionAsync();
             try
             {
-                return View(await dbcon.GSTMaster.Where(_ => _.IsAvailable == true
-                && _.GSTName.Contains(searchterm) || searchterm == null).ToListAsync());
+                GSTMasterListViewModel ObjModel = new();
+                ObjModel.NameSortOrder = string.IsNullOrEmpty(orderBy) ? "name_desc" : "";
+                var IndexList = dbcon.GSTMaster.Where(_ => _.IsAvailable == true
+                && _.GSTName.Contains(searchterm) || searchterm == null);
+
+                switch (orderBy)
+                {
+                    case "name_desc":
+                        IndexList = IndexList.OrderBy(a => a.GSTName);
+                        break;
+                    default:
+                        IndexList = IndexList.OrderBy(a => a.GSTId);
+                        break;
+                }
+                int TotalRecords = IndexList.Count();
+                int PageSize = 5;
+                int TotalPages = (int)Math.Ceiling((double)TotalRecords / PageSize);
+                IndexList = IndexList.Skip((CurrentPage - 1) * PageSize).Take(PageSize);
+
+                ObjModel.GSTMasterList = IndexList;
+                ObjModel.CurrentPage = CurrentPage;
+                ObjModel.TotalPage = TotalPages;
+                ObjModel.PageSize = PageSize;
+                ObjModel.Term = searchterm;
+                ObjModel.OrderBy = orderBy;
+
+                return View(ObjModel);
             }
             catch (Exception)
             {

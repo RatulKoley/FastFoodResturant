@@ -29,7 +29,8 @@
                         <h6 style="text-align:center;font-weight:600">ID</h6>
                     </th>
                     <th scope="col">
-                        <h6 style="text-align:center;font-weight:600">Table</h6>
+                        <a style="display: block; text-align: center; font-weight: 600; color: inherit; text-decoration: none; margin-bottom: 6px;"
+                           href="/Table/Index?orderBy=@Model.NameSortOrder">Table</a>
                     </th>
                     <th scope="col">
                         <h6 style="text-align:center;font-weight:600">Capacity</h6>
@@ -84,5 +85,87 @@
                 }
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                @if (Model.CurrentPage > 1)
+                {
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=1" aria-label="Very first page">
+                            <span aria-hidden="true">««</span>
+                        </a>
+                    </li>
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = Math.Max(1, Model.CurrentPage - 1); i <= Math.Min(Model.TotalPage, Model.CurrentPage + 1); i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="page-item" style="list-style: none; margin-right: 5px;">
+                            <a class="page-link active" style="color: #fff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    background-color: #007bff;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@i"> @i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item" style="list-style: none; margin-right: 5px;">
+                            <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@i"> @i</a>
+                        </li>
+                    }
+                }
+                @if (Model.CurrentPage < Model.TotalPage)
+                {
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                    <li class="page-item" style="list-style: none; margin-right: 5px;">
+                        <a class="page-link" style="color: #007bff;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;" href="/Table/Index?term=@Model.Term&orderBy=@Model.OrderBy&currentPage=@Model.TotalPage" aria-label="Last page">
+                            <span aria-hidden="true">»»</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
     </div>
 </div>
