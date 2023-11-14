@@ -1,0 +1,88 @@
+﻿@model FastFoodResturant.Models.ProductMaster
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/Create.css" />
+<div class="card card-for-foodmaster" style="max-width: 700px;">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div class="row">
+                <div class="col-md-4 offset-xl-0">
+                    <div class="form-group">
+                        <input asp-for="ProductName" class="form-control" placeholder="Product Name" />
+                        <span asp-validation-for="ProductName" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select asp-for="UnitId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.UnitId">
+                                <option value="">Select Unit</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="UnitId" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select asp-for="GSTId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.GSTId">
+                            <option value="">Select GST</option>
+                        </select>
+                        <span asp-validation-for="GSTId" class="label-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h6 style="font-weight: 600; display: inline-block;">Picture</h6>
+                        <label class="custom-file-upload">
+                            <span>Choose File</span>
+                            <input asp-for="ProductImage" type="file" name="ProductImageData" class="form-control-file" data-title="Choose File" />
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="form-group">
+                        <input asp-for="ProductDescription" class="form-control" placeholder="Product Description" />
+                        <span asp-validation-for="ProductDescription" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input asp-for="ProductPrice" class="form-control" placeholder="Product Price" />
+                        <span asp-validation-for="ProductPrice" class="label-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 offset-md-4" style="margin-top:10px;">
+                    <div class="form-group" id="botam">
+                        <input type="submit" value="Create" class="btn btn-create" />
+                        <button type="button" class="btn btn-cancel" onclick="window.history.back()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="error-message">
+                            <label class="label label-danger">@ViewBag.Message</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

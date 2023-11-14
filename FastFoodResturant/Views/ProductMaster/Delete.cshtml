@@ -1,4 +1,4 @@
-﻿@model FastFoodResturant.Models.FoodMaster
+﻿@model FastFoodResturant.Models.ProductMaster
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,16 +9,16 @@
 <div class="card card-for-delete">
     <div class="card-body">
         <form asp-action="Delete">
-            <input type="hidden" asp-for="FoodMasterId" />
+            <input type="hidden" asp-for="ProductId" />
 
             <div class="content-container">
                 <div class="profile-container">
-                    <img src="data:image;base64,@Convert.ToBase64String(Model.FoodImage)" alt="Profile Picture" class="profile-picture" />
+                    <img src="data:image;base64,@Convert.ToBase64String(Model.ProductImage)" alt="Profile Picture" class="profile-picture" />
                 </div>
 
                 <div class="text-and-buttons">
-                    <h4>@Html.DisplayFor(model => model.FoodName)</h4>
-                    <h6>₹ @Html.DisplayFor(model => model.FoodPrice)/-</h6>
+                    <h4>@Html.DisplayFor(model => model.ProductName)</h4>
+                    <h6>₹ @Html.DisplayFor(model => model.ProductPrice)/-</h6>
 
                     <div class="btn-container">
                         <input type="submit" value="Delete" class="btn btn-danger" />

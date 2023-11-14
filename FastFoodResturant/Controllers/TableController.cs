@@ -33,7 +33,7 @@ namespace FastFoodResturant.Controllers
                 switch (orderBy)
                 {
                     case "name_desc":
-                        IndexList = IndexList.OrderBy(a => a.TableName);
+                        IndexList = IndexList.OrderBy(a => a.IsOccupied);
                         break;
                     default:
                         IndexList = IndexList.OrderBy(a => a.TableId);

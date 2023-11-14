@@ -1,0 +1,80 @@
+﻿@model FastFoodResturant.Models.ProductMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+<div class="card card-for-edit" style="max-width: 700px;">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <input type="hidden" asp-for="ProductId" />
+            <input type="hidden" asp-for="StockId" />
+
+            <div class="row">
+                <div class="col-md-4 offset-xl-0">
+                    <div class="form-group">
+                        <input asp-for="ProductName" class="form-control" placeholder="Food Name" />
+                        <span asp-validation-for="ProductName" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select asp-for="UnitId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.UnitId">
+                                <option value="">Select Unit</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="UnitId" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select asp-for="GSTId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.GSTId">
+                            <option value="">Select GST</option>
+                        </select>
+                        <span asp-validation-for="GSTId" class="label-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center;">
+                        @if (Model.ProductImage != null && Model.ProductImage.Length > 0)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.ProductImage)" alt="Profile Picture" class="profile-picture" />
+                        }
+                        <input asp-for="ProductImage" type="file" name="ProductImageData" class="form-control-file" />
+                        <span asp-validation-for="ProductImage" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-group">
+                            <input asp-for="ProductDescription" class="form-control" placeholder="Product Description" />
+                            <span asp-validation-for="ProductDescription" class="label-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input asp-for="ProductPrice" class="form-control" placeholder="Product Price" />
+                            <span asp-validation-for="ProductPrice" class="label-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 offset-md-4">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

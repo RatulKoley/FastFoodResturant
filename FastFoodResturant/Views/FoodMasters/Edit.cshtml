@@ -6,96 +6,109 @@
 
 <link rel="stylesheet" href="~/css/Edit.css" />
 
-<div class="card card-for-edit">
+<div class="card card-for-edit"  style="max-width: 900px;">
     <div class="card-body">
         <form method="post" enctype="multipart/form-data" asp-action="Edit">
             <input type="hidden" asp-for="FoodMasterId" />
 
             <div class="row">
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-4 offset-xl-0">
                     <div class="form-group">
                         <input asp-for="FoodName" class="form-control" placeholder="Food Name" />
                         <span asp-validation-for="FoodName" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                        <div class="input-group">
+                            <select asp-for="CategoryId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.CategoryId">
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
                         <span asp-validation-for="CategoryId" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <select asp-for="GSTId" class="form-control" asp-items="ViewBag.GSTId"></select>
+                        <select asp-for="GSTId" class="form-control custom-select" style="border-radius: 5px;" asp-items="ViewBag.GSTId">
+                            <option value="">Select GST</option>
+                        </select>
                         <span asp-validation-for="GSTId" class="label-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input asp-for="FoodPrice" class="form-control" placeholder="Food Price" />
+                        <span asp-validation-for="FoodPrice" class="label-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
                     <div class="form-group">
                         <input asp-for="FoodDescription" class="form-control" placeholder="Food Description" />
                         <span asp-validation-for="FoodDescription" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-2 offset-md-1">
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" asp-for="IsVegan" /> Is Vegan ?
-                        </label>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select asp-for="FoodType" class="form-control custom-select" style="border-radius: 5px;">
+                                <option value="">Select Food Type</option>
+                                <option value="Appetizer">Appetizer</option>
+                                <option value="Main Course">Main Course</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Salad">Salad</option>
+                                <option value="Soup">Soup</option>
+                                <option value="Snack">Snack</option>
+                                <option value="Beverage">Beverage</option>
+                                <option value="Side Dish">Side Dish</option>
+                                <option value="Breakfast">Breakfast</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="FoodType" class="label-danger"></span>
                     </div>
+
                 </div>
-                <div class="col-md-2 offset-md-1">
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" asp-for="IsSpicy" /> Is Spicy ?
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-2 offset-md-1">
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" asp-for="IsGlutenFree" /> Is Gluten ?
-                        </label>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input asp-for="PreparationTime" class="form-control" placeholder="Preparation Time" type="time" />
+                        </div>
+                        <span asp-validation-for="PreparationTime" class="label-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 offset-md-1">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input asp-for="Fat" class="form-control" placeholder="Fat" />
                         <span asp-validation-for="Fat" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-2 offset-md-1">
+
+                <div class="col-md-3">
                     <div class="form-group">
-                        <input asp-for="Calories" class="form-control" placeholder="Calories" />
-                        <span asp-validation-for="Calories" class="label-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-2 offset-md-1">
-                    <div class="form-group">
-                        <input asp-for="Protein" class="form-control" placeholder="Protein" />
+                        <input asp-for="Protein" class="form-control" id="proteinInput" placeholder="Protein" />
                         <span asp-validation-for="Protein" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-2 offset-md-1">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input asp-for="Carbohydrates" class="form-control" placeholder="Carbohydrates" />
                         <span asp-validation-for="Carbohydrates" class="label-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-2 offset-md-1">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input asp-for="Fiber" class="form-control" placeholder="Fiber" />
                         <span asp-validation-for="Fiber" class="label-danger"></span>
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3" style="text-align:center;">
                         @if (Model.FoodImage != null && Model.FoodImage.Length > 0)
                         {
                             <img src="data:image;base64,@Convert.ToBase64String(Model.FoodImage)" alt="Profile Picture" class="profile-picture" />
@@ -103,23 +116,39 @@
                         <input asp-for="FoodImage" type="file" name="FoodImageData" class="form-control-file" />
                         <span asp-validation-for="FoodImage" class="text-danger"></span>
                     </div>
-                    <div class="col-md-3 offset-md-1">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <input asp-for="FoodType" class="form-control" placeholder="Food Type" />
-                            <span asp-validation-for="FoodType" class="label-danger"></span>
+                            <input asp-for="Calories" class="form-control" placeholder="Calories" />
+                            <span asp-validation-for="Calories" class="label-danger"></span>
                         </div>
                     </div>
-                    <div class="col-md-3 offset-md-1">
-                        <div class="form-group">
-                            <input asp-for="PreparationTime" class="form-control" placeholder="Preparation Time" />
-                            <span asp-validation-for="PreparationTime" class="label-danger"></span>
+                    <div class="col-md-2">
+                        <div class="form-group form-check">
+                            <label class="form-check-label" style="font-size: 18px; font-weight: 400;">
+                                <input class="form-check-input" type="checkbox" asp-for="IsVegan" />Vegan
+                            </label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-10 offset-md-1">
-                            <button type="submit" class="btn btn-update">Update</button>
-                            <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
+                    <div class="col-md-2">
+                        <div class="form-group form-check">
+                            <label class="form-check-label" style="font-size: 18px; font-weight: 400;">
+                                <input class="form-check-input" type="checkbox" asp-for="IsGlutenFree" />Gluten
+                            </label>
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group form-check">
+                            <label class="form-check-label" style="font-size: 18px; font-weight: 400;">
+                                <input class="form-check-input" type="checkbox" asp-for="IsSpicy" />Spicy
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 offset-md-5">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a class="btn btn-cancel" onclick="window.history.back()">Cancel</a>
                     </div>
                 </div>
             </div>
@@ -132,3 +161,8 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+@* <script>
+    var currentProteinValue = @Model.Protein;
+    document.getElementById('proteinInput').value = 'Current Protein: ' + currentProteinValue;
+</script> *@
